@@ -4,6 +4,10 @@ using Plots: plot,plot!,plotlyjs,pyplot,savefig
 using JLD2
 using FFTW
 
+using Logging: global_logger
+using TerminalLoggers: TerminalLogger
+global_logger(TerminalLogger())
+
 lx = 4.0*Float64(pi);
 ly = 2.0*Float64(pi);
 nx = 10;
