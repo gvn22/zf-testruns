@@ -2,6 +2,7 @@
 Install the dependencies by typing the following in the julia package REPL
 
 - add ZonalFlow (to use the [ZonalFlow](https://github.com/gvn22/ZonalFlow.jl) package)
+- add Revise (for simultaneous package development)
 - add Plots (for plotting figures)
 - add PyPlot (plotting format)
 - add JLD2 (for saving solution data)
