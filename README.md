@@ -16,4 +16,5 @@ Install the dependencies by typing the following in the julia package REPL
 - Or run on the terminal using `julia solve.jl`.
 
 # Precompile
-Type `./build.sh` in the terminal followed by `./run.sh`
+- Build using `./build.sh`, then copy the test.yml to input.yml and set your own parameters.
+- Run using `./run.sh`
