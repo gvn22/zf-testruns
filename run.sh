@@ -1,2 +1,2 @@
 #!/bin/bash
-julia -Jpc/sys.dylib solve.jl
+julia -Jsys.dylib solve.jl
