@@ -1,6 +1,6 @@
 using ZonalFlow
 using Plots
-using YAML
+using YAML,JLD2
 using Logging
 using TerminalLoggers
 global_logger(TerminalLogger())
@@ -30,9 +30,13 @@ mkpath(dn);
 
 ζ0 = ic_pert_eqm(lx,ly,nx,ny,Ξ,jw=Δθ);
 
-@time sol1 = nl(lx,ly,nx,ny,Ξ,β,τ,jw=Δθ,ic=ζ0,dt=dt,t_end=t_end,savefreq=savefreq);
-@time sol2 = gql(lx,ly,nx,ny,Λ,Ξ,β,τ,jw=Δθ,dt=dt,ic=ζ0,t_end=t_end,savefreq=savefreq);
-@time sol3 = gce2(lx,ly,nx,ny,Λ,Ξ,β,τ,jw=Δθ,ic=ζ0,dt=dt,t_end=t_end,poscheck=false,savefreq=savefreq);
+sol1 = nl(lx,ly,nx,ny,Ξ,β,τ,jw=Δθ,ic=ζ0,dt=dt,t_end=t_end,savefreq=savefreq);
+sol2 = gql(lx,ly,nx,ny,Λ,Ξ,β,τ,jw=Δθ,dt=dt,ic=ζ0,t_end=t_end,savefreq=savefreq);
+sol3 = gce2(lx,ly,nx,ny,Λ,Ξ,β,τ,jw=Δθ,ic=ζ0,dt=dt,t_end=t_end,poscheck=false,savefreq=savefreq);
+
+@save dn*"nl.jld2" sol1
+@save dn*"gql_$Λ.jld2" sol2
+@save dn*"gce2_$Λ.jld2" sol3
 
 zones = reshape(["$i" for i = 0:1:nx-1],1,nx);
 
