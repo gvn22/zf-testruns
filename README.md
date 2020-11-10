@@ -6,13 +6,14 @@ Install the dependencies by typing the following in the julia package REPL
 - add Plots (for plotting figures)
 - add PyPlot (plotting format)
 - add JLD2 (for saving solution data)
+- add YAML (for reading parameters)
 - add FFTW (for Fourier transforms)
 - add Logging
 - add TerminalLogger (for logging solution progress in the terminal)
 
 # Run
-- Run the script interactively in `Atom` using `Juno`.
+- Run the `solve.jl` script interactively in `Atom` using `Juno`.
 - Or run on the terminal using `julia solve.jl`.
 
-# Precompile and run
-Type `./build.sh` followed by `./run.sh`
+# Precompile
+Type `./build.sh` in the terminal followed by `./run.sh`
