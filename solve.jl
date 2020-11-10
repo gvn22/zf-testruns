@@ -10,8 +10,8 @@ global_logger(TerminalLogger())
 
 lx = 4.0*Float64(pi);
 ly = 2.0*Float64(pi);
-nx = 10;
-ny = 20;
+nx = 6;
+ny = 6;
 
 Ω = 2.0*Float64(pi)
 θ = 0.0
@@ -21,11 +21,11 @@ ny = 20;
 τ = 20.0/Ω
 Δθ = 0.2
 
-Λ = 6
+Λ = 3
 
 dt = 0.001
 t_end = 200.0
-savefreq = 5
+savefreq = 20
 
 ζ0 = ic_pert_eqm(lx,ly,nx,ny,Ξ,jw=Δθ); # one ic for all
 

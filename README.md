@@ -14,5 +14,5 @@ Install the dependencies by typing the following in the julia package REPL
 - Run the script interactively in `Atom` using `Juno`.
 - Or run on the terminal using `julia solve.jl`.
 
-# Precompile system image
-In principle, you can create back the required functions into a system image and load `julia` using that system image. This is being worked at the moment.
+# Precompile and run
+Type `./build.sh` followed by `./run.sh`

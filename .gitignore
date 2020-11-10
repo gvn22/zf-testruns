@@ -1,3 +1,7 @@
 tests/
+test_precompile/
 figures/
 .DS_Store
+*.o
+*.dylib
+precompile.jl
