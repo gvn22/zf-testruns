@@ -1,25 +1,32 @@
 using ZonalFlow
 using Plots
+using YAML
 using Logging
 using TerminalLoggers
 global_logger(TerminalLogger())
 
+params = YAML.load_file("input.yml"; dicttype=Dict{Symbol,Any})
+
 lx = 4.0*Float64(pi);
 ly = 2.0*Float64(pi);
-nx = 3;
-ny = 3;
+nx = params[:nx];
+ny = params[:ny];
 
-Ω = 2.0*Float64(pi)
-θ = 0.0
-β = 2.0*Ω*cos(θ)
-Ξ = 0.2*Ω
-τ = 20.0/Ω
-Δθ = 0.2
-dt = 0.001
-t_end = 200.0
-savefreq = 5
+Λ = params[:Λ];
 
-Λ = 1
+Ω = 2.0*Float64(pi);
+θ = params[:θ];
+β = 2.0*Ω*cos(θ);
+Ξ = params[:Ξ]*Ω;
+τ = params[:τ]/Ω;
+Δθ = params[:Δθ];
+
+dt = params[:dt];
+t_end = params[:t_end];
+savefreq = params[:savefreq];
+
+dn = params[:dn];
+mkpath(dn);
 
 ζ0 = ic_pert_eqm(lx,ly,nx,ny,Ξ,jw=Δθ);
 

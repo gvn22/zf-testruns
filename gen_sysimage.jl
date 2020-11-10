@@ -2,10 +2,11 @@ Base.init_depot_path()
 Base.init_load_path()
 # Base.reinit_stdio()
 
-using ZonalFlow
+using ZonalFlow,DiffEqBase
 using Plots
+using YAML,JLD2
+using FFTW
 using TerminalLoggers
-using JLD2
 
 @eval Module() begin
     for (pkgid, mod) in Base.loaded_modules
