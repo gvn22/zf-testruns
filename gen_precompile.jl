@@ -5,7 +5,7 @@ using Logging
 using TerminalLoggers
 global_logger(TerminalLogger())
 
-params = YAML.load_file("input.yml"; dicttype=Dict{Symbol,Any})
+params = YAML.load_file("test.yml"; dicttype=Dict{Symbol,Any})
 
 lx = 4.0*Float64(pi);
 ly = 2.0*Float64(pi);
