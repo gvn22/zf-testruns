@@ -5,6 +5,7 @@ Base.init_load_path()
 using ZonalFlow
 using Plots
 using TerminalLoggers
+using JLD2
 
 @eval Module() begin
     for (pkgid, mod) in Base.loaded_modules

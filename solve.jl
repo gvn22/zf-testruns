@@ -21,27 +21,27 @@ ny = 6;
 τ = 20.0/Ω
 Δθ = 0.2
 
-Λ = 3
-
 dt = 0.001
 t_end = 200.0
 savefreq = 20
 
-ζ0 = ic_pert_eqm(lx,ly,nx,ny,Ξ,jw=Δθ); # one ic for all
+Λ = 3
 
 dn = "tests/10x20/l0j0_1t10/";
+
 mkpath(dn);
 
+ζ0 = ic_pert_eqm(lx,ly,nx,ny,Ξ,jw=Δθ); # one ic for all
+
 @time sol1 = nl(lx,ly,nx,ny,Ξ,β,τ,jw=Δθ,ic=ζ0,dt=dt,t_end=t_end,savefreq=savefreq);
-@save dn*"nl.jld2" sol1
-
 @time sol2 = gql(lx,ly,nx,ny,Λ,Ξ,β,τ,jw=Δθ,dt=dt,ic=ζ0,t_end=t_end,savefreq=savefreq);
-@save dn*"gql_$Λ.jld2" sol2
-
 @time sol3 = gce2(lx,ly,nx,ny,Λ,Ξ,β,τ,jw=Δθ,ic=ζ0,dt=dt,t_end=t_end,poscheck=false,savefreq=savefreq);
+
+@save dn*"nl.jld2" sol1
+@save dn*"gql_$Λ.jld2" sol2
 @save dn*"gce2_$Λ.jld2" sol3
 
-pyplot();
+# pyplot();
 
 ## Zonal energy
 zones = reshape(["$i" for i = 0:1:nx-1],1,nx);
