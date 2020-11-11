@@ -2,6 +2,8 @@ tests/
 test_precompile/
 figures/
 
+input.yml
+
 .DS_Store
 *.o
 *.dylib
