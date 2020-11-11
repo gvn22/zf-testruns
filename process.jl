@@ -1,3 +1,4 @@
+using Revise
 using ZonalFlow
 using Plots: plot,plot!,savefig,pyplot
 using YAML,JLD2
@@ -43,8 +44,8 @@ A_gce2 = meanvorticity(lx,ly,nx,ny,Λ,sol_gce2.u);
 plot(angles,Ajet,xaxis="θ",yaxis="<ζ>",color=:black,label="Jet");
 plot!(angles,A_nl[end,:],xaxis="θ",yaxis="<ζ>",label="NL");
 plot!(angles,A_ql[end,:],xaxis="θ",yaxis="<ζ>",label="QL");
-_zt = plot!(angles,A_gql[end,:],legend=:bottomright,xaxis="θ",yaxis="<ζ>",label="GQL($Λ)");
-_zt = plot!(angles,A_gce2[end,:],legend=:bottomright,xaxis="θ",yaxis="<ζ>",label="GCE2($Λ)");
+_zt = plot!(angles,A_gql[end,:],legend=:bottomright,xaxis="θ",yaxis="<ζ>",label="GQL($Λ)")
+_zt = plot!(angles,A_gce2[end,:],legend=:bottomright,xaxis="θ",yaxis="<ζ>",label="GCE2($Λ)")
 savefig(_zt,dn*"zt_2.png");
 
 ## Spatial vorticity

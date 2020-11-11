@@ -11,5 +11,5 @@ mkpath(dn);
 
 ζ0 = ic_pert_eqm(lx,ly,nx,ny,Ξ,jw=Δθ); # one ic for all
 
-@time sol_gce2 = gce2(lx,ly,nx,ny,Λ,Ξ,β,τ,jw=Δθ,ic=ζ0,dt=dt,t_end=t_end,poscheck=false,savefreq=savefreq);
+@time sol_gce2 = gce2(lx,ly,nx,ny,Λ,Ξ,β,τ,jw=Δθ,ic=ζ0,dt=dt,t_end=t_end,poscheck=true,savefreq=savefreq);
 @save dn*"gce2_$Λ.jld2" sol_gce2

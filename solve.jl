@@ -21,6 +21,10 @@ for Λ in [1,2,3,6]
     @time sol_gql = gql(lx,ly,nx,ny,Λ,Ξ,β,τ,jw=Δθ,dt=dt,ic=ζ0,t_end=t_end,savefreq=savefreq);
     @save dn*"gql_$Λ.jld2" sol_gql
 
-    @time sol_gce2 = gce2(lx,ly,nx,ny,Λ,Ξ,β,τ,jw=Δθ,ic=ζ0,dt=dt,t_end=t_end,poscheck=false,savefreq=savefreq);
+    if Λ < 3:
+        @time sol_gce2 = gce2(lx,ly,nx,ny,Λ,Ξ,β,τ,jw=Δθ,ic=ζ0,dt=dt,t_end=t_end,poscheck=true,savefreq=savefreq);
+    else
+        @time sol_gce2 = gce2(lx,ly,nx,ny,Λ,Ξ,β,τ,jw=Δθ,ic=ζ0,dt=dt,t_end=t_end,poscheck=false,savefreq=savefreq);
+    end
     @save dn*"gce2_$Λ.jld2" sol_gce2
 end
