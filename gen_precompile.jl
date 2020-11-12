@@ -43,7 +43,7 @@ zones = reshape(["$i" for i = 0:1:nx-1],1,nx);
 P1,O1 = zonalenergy(lx,ly,nx,ny,sol1.u);
 
 A1 = meanvorticity(lx,ly,nx,ny,sol1.u)
-A3 = meanvorticity(lx,ly,nx,ny,Λ,sol3.u)
+A3 = meanvorticity(lx,ly,nx,ny,sol3.u)
 U1 = inversefourier(nx,ny,sol1.u)
 U3 = inversefourier(nx,ny,Λ,sol3.u)
 
