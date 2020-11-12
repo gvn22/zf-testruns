@@ -36,17 +36,17 @@ savefig(_p,dn*"GCE2_"*"$Λ"*"_em.png");
 angles = (180.0/ly)*LinRange(-ly/2,ly/2,2*ny-1);
 Ajet = real(ifft(ifftshift(ic_eqm(lx,ly,nx,ny,Ξ,jw=Δθ)[:,1])));
 
-A_nl = meanvorticity(lx,ly,nx,ny,sol_nl.u);
-A_ql = meanvorticity(lx,ly,nx,ny,sol_ql.u);
-A_gql = meanvorticity(lx,ly,nx,ny,sol_gql.u);
-A_gce2 = meanvorticity(lx,ly,nx,ny,Λ,sol_gce2.u);
+A_nl = meanvorticity(lx,ly,nx,ny,sol_nl.t,sol_nl.u);
+A_ql = meanvorticity(lx,ly,nx,ny,sol_ql.t,sol_ql.u);
+A_gql = meanvorticity(lx,ly,nx,ny,sol_gql.t,sol_gql.u);
+A_gce2 = meanvorticity(lx,ly,nx,ny,sol_gce2.t,sol_gce2.u);
 
 plot(angles,Ajet,xaxis="θ",yaxis="<ζ>",color=:black,label="Jet");
 plot!(angles,A_nl[end,:],xaxis="θ",yaxis="<ζ>",label="NL");
 plot!(angles,A_ql[end,:],xaxis="θ",yaxis="<ζ>",label="QL");
 _zt = plot!(angles,A_gql[end,:],legend=:bottomright,xaxis="θ",yaxis="<ζ>",label="GQL($Λ)")
 _zt = plot!(angles,A_gce2[end,:],legend=:bottomright,xaxis="θ",yaxis="<ζ>",label="GCE2($Λ)")
-savefig(_zt,dn*"zt_2.png");
+savefig(_zt,dn*"zt_$Λ"*"_tavg.png");
 
 ## Spatial vorticity
 xx = LinRange(-lx/2,lx/2,2*nx-1);
