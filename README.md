@@ -19,4 +19,4 @@ Install the dependencies by typing the following in the julia package REPL
 - Configure paths `./build.sh` as per comments in that file.
 - Build using `./build.sh`
 - Copy the `test.yml` to a separate file `input.yml` and set your own parameters there.
-- Run using `./run.sh`
+- Run using `./run.sh solve.jl'

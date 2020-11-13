@@ -1,13 +1,11 @@
 using Revise
 using ZonalFlow
-using Plots: plot,plot!,savefig,pyplot
+using Plots: plot,plot!,savefig,pyplot,plot_color,get_color_palette
 using YAML,JLD2
 using FFTW
 
 include("loadparams.jl")
-
 pyplot();
-
 zones = reshape(["$i" for i = 0:1:nx-1],1,nx);
 
 @load dn*"nl.jld2" sol_nl
@@ -22,7 +20,7 @@ _p = plot(sol_ql.t,P,xaxis=("Time"),yscale=:log10,yaxis=("Energy in Zonal Mode",
 savefig(_p,dn*"QL_em.png");
 
 @load dn*"gql_$Λ.jld2" sol_gql
-@load dn*"gce2_$Λ.jld2" sol_gce2
+@load dn*"gce2_$Λ.jld2" sol_gce2 info_gce2
 
 P,O = zonalenergy(lx,ly,nx,ny,sol_gql.u);
 _p = plot(sol_gql.t,P,xaxis=("Time"),yscale=:log10,yaxis=("Energy in Zonal Mode",(1e-9,1e3)),labels=zones,palette=:tab10,legend=:outerright)
@@ -41,11 +39,12 @@ A_ql = meanvorticity(lx,ly,nx,ny,sol_ql.t,sol_ql.u);
 A_gql = meanvorticity(lx,ly,nx,ny,sol_gql.t,sol_gql.u);
 A_gce2 = meanvorticity(lx,ly,nx,ny,sol_gce2.t,sol_gce2.u);
 
-plot(angles,Ajet,xaxis="θ",yaxis="<ζ>",color=:black,label="Jet");
-plot!(angles,A_nl[end,:],xaxis="θ",yaxis="<ζ>",label="NL");
-plot!(angles,A_ql[end,:],xaxis="θ",yaxis="<ζ>",label="QL");
-_zt = plot!(angles,A_gql[end,:],legend=:bottomright,xaxis="θ",yaxis="<ζ>",label="GQL($Λ)")
-_zt = plot!(angles,A_gce2[end,:],legend=:bottomright,xaxis="θ",yaxis="<ζ>",label="GCE2($Λ)")
+colours = get_color_palette(:auto, plot_color(:white));
+# plot(angles,Ajet,xaxis="θ",yaxis="<ζ>",color=:black,label="Jet");
+_zt = plot(angles,A_nl[end,:],xaxis="θ",yaxis="<ζ>",color=:black,label="NL");
+_zt = plot!(_zt,angles,A_ql[end,:],xaxis="θ",yaxis="<ζ>",color=:black,line=:dash,label="QL/CE2");
+_zt = plot!(_zt,angles,A_gql[end,:],legend=:bottomright,xaxis="θ",yaxis="<ζ>",color=colours[1],label="GQL($Λ)")
+_zt = plot!(_zt,angles,A_gce2[40,:],legend=:bottomright,xaxis="θ",yaxis="<ζ>",color=colours[2],label="GCE2($Λ)")
 savefig(_zt,dn*"zt_$Λ"*"_tavg.png");
 
 ## Spatial vorticity

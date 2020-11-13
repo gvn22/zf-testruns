@@ -17,5 +17,7 @@ ny = params[:ny];
 dt = params[:dt];
 t_end = params[:t_end];
 savefreq = params[:savefreq];
+poscheckfreq = params[:poscheckfreq];
+saveinfofreq = params[:saveinfofreq];
 
 dn = params[:dn];
