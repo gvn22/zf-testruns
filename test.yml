@@ -1,14 +1,16 @@
-nx: 6
-ny: 6
+nx: 10
+ny: 12
 
-Λ: 3
+Λ: 0
 
 θ: 0.0
 Ξ: 0.2
 Δθ: 0.2
-τ: 20.0
+τ: 2.0
 dt: 0.001
 t_end: 200.0
-savefreq: 20
+savefreq: 5
+poscheckfreq: 10
+saveinfofreq: 10
 
-dn: "pc/"
+dn: "rank/"
